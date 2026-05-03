@@ -1,9 +1,15 @@
 import streamlit as st
 import joblib
+import os
 
 # Load model and vectorizer
-model = joblib.load('../model/fake_news_model.pkl')
-vectorizer = joblib.load('../model/tfidf_vectorizer.pkl')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, '..', 'model', 'fake_news_model.pkl')
+tfidf_path = os.path.join(BASE_DIR, '..', 'model', 'tfidf.pkl')
+
+model = joblib.load(model_path)
+vectorizer = joblib.load(tfidf_path)
 
 # Streamlit UI
 st.title("Fake News Detector")
